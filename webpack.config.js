@@ -1,20 +1,21 @@
 var path = require('path')
 var webpack = require('webpack')
 
+const env = process.env.NODE_ENV
+const isRELEASE = env === 'production'
+const isDoc = env === 'doc'
+
 function resolve (dir) {
   return path.join(__dirname, '.', dir)
 }
 
-const isRELEASE = process.env.NODE_ENV === 'production'
-
 module.exports = {
   entry: isRELEASE ? './src/codeSnippet/index.js' : './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, isDoc ? './docs' : './dist'),
     publicPath: '/dist/',
     filename: 'build.js',
-    libraryTarget: 'umd',
-    library: 'code-snippet'
+    libraryTarget: 'umd'
   },
   module: {
     rules: [

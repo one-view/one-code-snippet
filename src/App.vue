@@ -4,8 +4,9 @@
 
     <br>
     <br>
-
-    <code-snippet :value="html" type="html"></code-snippet>
+    <div class="wrapper">
+      <code-snippet :value="html" type="html"></code-snippet>
+    </div>
 
   </div>
 </template>
@@ -39,5 +40,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.wrapper{
+  width: 960px;
+  margin: auto;
 }
 </style>
